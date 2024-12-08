@@ -31,3 +31,10 @@ yarn run dev
 - The status of any employee can be changed
 - A new employee can be added by clicking the **Create** button and filling in the data in the modal window form
 - Media queries have been added to improve responsiveness
+
+## Screens
+![image](https://github.com/user-attachments/assets/17e5f8aa-3e00-448c-99ef-f4e7f601a446)
+
+![image](https://github.com/user-attachments/assets/44b98b79-54b9-4a94-885f-943b454b5841)
+
+![image](https://github.com/user-attachments/assets/40477d0c-b87c-4055-80d9-7ca9cb0b9223)
