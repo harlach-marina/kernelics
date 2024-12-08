@@ -1,6 +1,6 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
-import { createUser, getUsers, updateUser } from 'features/employee/api/employee';
-import { User } from 'features/employee/model/user';
+import { createUser, getUsers, updateUser } from '../api/employee';
+import { User } from '../types';
 
 const PREFIX = '@employee';
 

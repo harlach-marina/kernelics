@@ -1,14 +1,13 @@
-import { Employee } from './Employee';
+import { Employee } from '../Employee';
 import { useDeferredValue, useEffect, useState } from 'react';
 import { styles } from './Employees.styles';
 import { Tile, Filter } from 'shared/ui';
 import { Button } from '@mui/material';
 import AddIcon from '@mui/icons-material/Add';
 import { useAppDispatch, useAppSelector } from 'app/hooks';
-import { getEmployees, selectEmployees } from 'entities/employee';
-import { Status, User } from 'features/employee/model/user';
-import { statusOptions } from './status';
-import { AddEmpoyee } from './AddEmpoyee';
+import { getEmployees, selectEmployees, Status, User } from 'entities/employee';
+import { statusOptions } from '../../constants/status';
+import { AddEmployee } from '../AddEmployee/AddEmployee';
 
 export const Employees = () => {
   const dispatch = useAppDispatch();
@@ -88,14 +87,14 @@ export const Employees = () => {
       </section>
       {deferredFilteredEmployees?.length > 0 && (
         <section css={styles.list}>
-          {deferredFilteredEmployees.map((employee) => (
+          {deferredFilteredEmployees.map(employee => (
             <Tile key={employee.id}>
               <Employee {...employee} />
             </Tile>
           ))}
         </section>
       )}
-      {openDialog && <AddEmpoyee handleClose={closeDialog} />}
+      {openDialog && <AddEmployee handleClose={closeDialog} />}
     </main>
   );
 };

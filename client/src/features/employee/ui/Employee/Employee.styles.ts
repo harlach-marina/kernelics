@@ -39,20 +39,6 @@ export const styles = {
     justify-content: flex-end;
     gap: 12px;
   `,
-  option: css`
-    display: flex;
-    align-items: center;
-    gap: 10px;
-    font-size: 14px;
-  `,
-  indicator: (color: string) => css`
-    display: flex;
-
-    & svg {
-      font-size: 14px;
-      color: ${color};
-    }
-  `,
   header: css`
     font-size: 22px;
     font-weight: 500;

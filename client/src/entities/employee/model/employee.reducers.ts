@@ -1,5 +1,5 @@
 import { createSlice } from '@reduxjs/toolkit';
-import { User } from 'features/employee/model/user';
+import { User } from '../types/user';
 import { setEmployees } from './employee.actions';
 
 export interface Users {

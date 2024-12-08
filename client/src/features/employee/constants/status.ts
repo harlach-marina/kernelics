@@ -1,4 +1,4 @@
-import { Status } from '../../model/user';
+import { Status } from 'entities/employee';
 
 export const statusView: {
   [key in Status]: {

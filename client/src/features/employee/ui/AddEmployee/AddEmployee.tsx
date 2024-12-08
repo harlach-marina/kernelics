@@ -1,17 +1,16 @@
 import { Dialog, DialogTitle, DialogContent, DialogContentText, Button, TextField } from '@mui/material';
 import { useAppDispatch } from 'app/hooks';
-import { createEmployee } from 'entities/employee';
-import { Status, User } from 'features/employee/model/user';
+import { createEmployee, Status, User } from 'entities/employee';
 import { ChangeEvent, FC, FormEvent, useState } from 'react';
-import { statusOptions } from './status';
 import { SelectBox } from 'shared/ui';
-import { styles } from './AddEmployees.styles';
+import { styles } from './AddEmployee.styles';
+import { statusOptions } from '../../constants/status';
 
 interface AddEmployeeProps {
   handleClose: () => void;
 }
 
-export const AddEmpoyee: FC<AddEmployeeProps> = ({ handleClose }) => {
+export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
   const dispatch = useAppDispatch();
   const [employeeName, setEmployeeName] = useState<string>('');
   const [employeeStatus, setEmployeeStatus] = useState<Status>('Working');

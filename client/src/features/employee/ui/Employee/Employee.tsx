@@ -1,29 +1,11 @@
 import { FC, useMemo } from 'react';
-import { Status, User } from '../../model/user';
-import { statusOptions, statusView } from './status';
+import { Status, User } from 'entities/employee';
 import { styles } from './Employee.styles';
 import { SelectBox } from 'shared/ui';
-import TripOriginIcon from '@mui/icons-material/TripOrigin';
 import { useAppDispatch } from 'app/hooks';
 import { updateEmployee } from 'entities/employee';
-
-interface OptionProps {
-  title: string;
-  value: Status;
-}
-
-const Option: FC<OptionProps> = ({ title, value }) => {
-  const { color } = statusView[value];
-
-  return (
-    <section css={styles.option}>
-      <div css={styles.indicator(color)}>
-        <TripOriginIcon />
-      </div>
-      <div>{title}</div>
-    </section>
-  );
-};
+import { StatusOption } from '../StatusOption';
+import { statusOptions } from '../../constants/status';
 
 export const Employee: FC<User> = employee => {
   const dispatch = useAppDispatch();
@@ -34,7 +16,7 @@ export const Employee: FC<User> = employee => {
     return statusOptions.map(({ value, title }) => {
       return {
         value,
-        title: <Option title={title} value={value as Status} />,
+        title: <StatusOption title={title} value={value as Status} />,
       };
     });
   }, []);
