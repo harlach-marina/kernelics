@@ -24,7 +24,7 @@ export const statusView: {
   },
 };
 
-export const statusOptions = [
+export const statusOptions: { value: Status; title: string }[] = [
   { value: 'Business', title: statusView['Business'].title },
   { value: 'Lunch', title: statusView['Lunch'].title },
   { value: 'Vacation', title: statusView['Vacation'].title },

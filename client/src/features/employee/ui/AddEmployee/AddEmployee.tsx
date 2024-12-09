@@ -1,4 +1,4 @@
-import { ChangeEvent, FC, FormEvent, useMemo, useState } from 'react';
+import { ChangeEvent, FC, FormEvent, useCallback, useMemo, useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, Button, TextField } from '@mui/material';
 
 import { useAppDispatch } from 'app/hooks';
@@ -25,7 +25,7 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
     return statusOptions.map(({ value, title }) => {
       return {
         value,
-        title: <StatusOption title={title} value={value as Status} />,
+        title: <StatusOption title={title} value={value} />,
       };
     });
   }, []);
@@ -38,9 +38,9 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
     setEmployeeName(value);
   };
 
-  const handleChangeStatus = (value: string) => {
+  const handleChangeStatus = useCallback((value: string) => {
     setEmployeeStatus(value as Status);
-  };
+  }, []);
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();

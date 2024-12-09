@@ -1,4 +1,4 @@
-import { FC, useMemo } from 'react';
+import { FC, memo, useCallback, useMemo } from 'react';
 import { Status, User } from 'entities/employee';
 import { styles } from './Employee.styles';
 import { SelectBox } from 'shared/ui';
@@ -7,7 +7,7 @@ import { updateEmployee } from 'entities/employee';
 import { StatusOption } from '../StatusOption';
 import { statusOptions } from '../../constants/status';
 
-export const Employee: FC<User> = employee => {
+export const Employee: FC<User> = memo(employee => {
   const dispatch = useAppDispatch();
 
   const { name, status, img } = employee;
@@ -16,14 +16,17 @@ export const Employee: FC<User> = employee => {
     return statusOptions.map(({ value, title }) => {
       return {
         value,
-        title: <StatusOption title={title} value={value as Status} fontSize="14px" />,
+        title: <StatusOption title={title} value={value} fontSize="14px" />,
       };
     });
   }, []);
 
-  const handleChangeStatus = (value: string) => {
-    dispatch(updateEmployee({ ...employee, status: value as Status }));
-  };
+  const handleChangeStatus = useCallback(
+    (value: string) => {
+      dispatch(updateEmployee({ ...employee, status: value as Status }));
+    },
+    [employee, dispatch],
+  );
 
   return (
     <section css={styles.container}>
@@ -42,4 +45,4 @@ export const Employee: FC<User> = employee => {
       </main>
     </section>
   );
-};
+});
