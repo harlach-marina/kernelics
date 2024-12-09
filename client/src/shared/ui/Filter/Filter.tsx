@@ -1,8 +1,10 @@
 import { FC } from 'react';
 import { TextField, InputAdornment, Divider, IconButton } from '@mui/material';
 import { Clear, Search } from '@mui/icons-material';
-import { styles } from './Filter.styles';
+
 import { SelectBox } from '../SelectBox';
+
+import { styles } from './Filter.styles';
 
 interface FilterProps {
   options: {

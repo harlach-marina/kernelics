@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import { MediaQueries } from 'shared/constants';
+
+import { Colors, MediaQueries } from 'shared/constants';
 
 export const styles = {
   container: css`
@@ -14,10 +15,14 @@ export const styles = {
     column-gap: 0;
     row-gap: 20px;
 
-    @media only screen and (min-width: ${MediaQueries.MEDIUM}) {
+    @media only screen and (min-width: ${MediaQueries.SMALL}) {
       grid-template-columns: 1fr 1fr;
-      column-gap: 40px;
-      row-gap: 40px;
+      column-gap: 20px;
+      row-gap: 20px;
+      margin: 0 20px;
+    }
+
+    @media only screen and (min-width: ${MediaQueries.MEDIUM}) {
       margin: 0 40px;
     }
 
@@ -40,7 +45,7 @@ export const styles = {
     }
   `,
   buttonCreate: css`
-    background-color: #109cf1;
+    background-color: ${Colors.primaryBlue};
     font-weight: 600;
     text-transform: none;
     padding: 10px 30px;

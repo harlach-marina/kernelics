@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import { MediaQueries } from 'shared/constants';
+
+import { Colors, MediaQueries } from 'shared/constants';
 
 export const styles = {
   container: css`
@@ -18,7 +19,7 @@ export const styles = {
     font-weight: 600;
     line-height: normal;
     margin: 0;
-    color: #109cf1;
+    color: ${Colors.primaryBlue};
 
     @media only screen and (min-width: ${MediaQueries.MEDIUM}) {
       font-size: 36px;

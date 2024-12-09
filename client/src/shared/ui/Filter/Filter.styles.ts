@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import { MediaQueries } from 'shared/constants';
+
+import { Colors, MediaQueries } from 'shared/constants';
 
 export const styles = {
   container: css`
@@ -20,7 +21,7 @@ export const styles = {
     & .MuiInputBase-root input::placeholder,
     .MuiFormLabel-root,
     .MuiFormLabel-root.Mui-focused {
-      color: #cccccc;
+      color: ${Colors.secondaryGary};
       opacity: 1;
     }
 
@@ -30,10 +31,6 @@ export const styles = {
   `,
   input: css`
     width: 90%;
-
-    '& .muiinputbase-root ::placeholder': {
-      color: 'blue';
-    }
   `,
   divider: css`
     height: 30px;

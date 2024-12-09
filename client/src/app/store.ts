@@ -1,4 +1,5 @@
 import { configureStore } from '@reduxjs/toolkit';
+
 import employeeReducer from 'entities/employee/model/employee.reducers';
 
 export const store = configureStore({

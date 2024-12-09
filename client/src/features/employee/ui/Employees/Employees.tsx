@@ -1,13 +1,17 @@
-import { Employee } from '../Employee';
 import { useDeferredValue, useEffect, useState } from 'react';
-import { styles } from './Employees.styles';
-import { Tile, Filter } from 'shared/ui';
-import { Button } from '@mui/material';
+
 import AddIcon from '@mui/icons-material/Add';
+import { Button } from '@mui/material';
+
 import { useAppDispatch, useAppSelector } from 'app/hooks';
 import { getEmployees, selectEmployees, Status, User } from 'entities/employee';
-import { statusOptions } from '../../constants/status';
+import { Tile, Filter } from 'shared/ui';
+
 import { AddEmployee } from '../AddEmployee/AddEmployee';
+import { Employee } from '../Employee';
+import { statusOptions } from '../../constants/status';
+
+import { styles } from './Employees.styles';
 
 export const Employees = () => {
   const dispatch = useAppDispatch();

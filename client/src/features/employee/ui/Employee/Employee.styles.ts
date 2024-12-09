@@ -1,14 +1,16 @@
 import { css } from '@emotion/react';
+
 import { MediaQueries } from 'shared/constants';
 
 export const styles = {
   container: css`
     display: grid;
     grid-template-columns: 1fr 3fr;
-    column-gap: 20px;
+    column-gap: 10px;
 
     @media only screen and (min-width: ${MediaQueries.MEDIUM}) {
       grid-template-columns: 1fr 1fr;
+      column-gap: 20px;
     }
   `,
   image: css`

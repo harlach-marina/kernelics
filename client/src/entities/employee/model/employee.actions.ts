@@ -1,4 +1,5 @@
 import { createAction, createAsyncThunk } from '@reduxjs/toolkit';
+
 import { createUser, getUsers, updateUser } from '../api/employee';
 import { User } from '../types';
 

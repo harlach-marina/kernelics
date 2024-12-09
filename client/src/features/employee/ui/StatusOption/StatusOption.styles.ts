@@ -1,17 +1,17 @@
 import { css } from '@emotion/react';
 
 export const styles = {
-  option: css`
+  option: (size?: string) => css`
     display: flex;
     align-items: center;
     gap: 10px;
-    font-size: 14px;
+    font-size: ${size || 'inherit'};
   `,
-  indicator: (color: string) => css`
+  indicator: (color: string, size?: string) => css`
     display: flex;
 
     & svg {
-      font-size: 14px;
+      font-size: ${size || 'inherit'};
       color: ${color};
     }
   `,

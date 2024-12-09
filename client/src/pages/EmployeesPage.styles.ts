@@ -1,17 +1,19 @@
 import { css } from '@emotion/react';
-import { MediaQueries } from 'shared/constants';
+
+import { Colors, MediaQueries } from 'shared/constants';
 
 export const styles = {
   button: css`
     font-weight: 500;
     text-transform: none;
-    padding: 5px 10px;
+    width: 120px;
     font-size: 18px;
     border-width: 2px;
-    color: #109cf1;
+    color: ${Colors.secondaryBlue};
+    border-color: ${Colors.secondaryBlue};
 
     @media only screen and (min-width: ${MediaQueries.MEDIUM}) {
-      padding: 5px 42px;
+      width: 150px;
     }
   `,
 };

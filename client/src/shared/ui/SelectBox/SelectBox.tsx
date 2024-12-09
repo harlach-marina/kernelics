@@ -1,5 +1,5 @@
-import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, SelectVariants } from '@mui/material';
 import { FC, ReactNode, useState } from 'react';
+import { FormControl, InputLabel, MenuItem, Select, SelectChangeEvent, SelectVariants } from '@mui/material';
 
 interface SelectBoxProps {
   options: {

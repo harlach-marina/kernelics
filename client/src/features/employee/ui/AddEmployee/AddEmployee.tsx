@@ -1,11 +1,14 @@
+import { ChangeEvent, FC, FormEvent, useMemo, useState } from 'react';
 import { Dialog, DialogTitle, DialogContent, DialogContentText, Button, TextField } from '@mui/material';
+
 import { useAppDispatch } from 'app/hooks';
 import { createEmployee, Status, User } from 'entities/employee';
-import { ChangeEvent, FC, FormEvent, useMemo, useState } from 'react';
 import { SelectBox } from 'shared/ui';
-import { styles } from './AddEmployee.styles';
-import { statusOptions } from '../../constants/status';
+
 import { StatusOption } from '../StatusOption';
+import { statusOptions } from '../../constants/status';
+
+import { styles } from './AddEmployee.styles';
 
 const IMG_MOCK = 'https://picsum.photos/id/338/200/200';
 
@@ -61,7 +64,8 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
       <DialogTitle css={styles.header}>Create a new Employee</DialogTitle>
       <DialogContent>
         <DialogContentText>
-          Fill in the form and press Create Employee button to create a new Employee. All fields are required.
+          Fill in the employee name field and select a status before clicking the Create Employee button. All fields are
+          required.{' '}
         </DialogContentText>
         <main css={styles.formFields}>
           <TextField
@@ -85,10 +89,10 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
           </section>
         </main>
         <footer css={styles.footer}>
-          <Button variant="outlined" onClick={handleClose}>
+          <Button css={[styles.button, styles.buttonCancel]} variant="outlined" onClick={handleClose}>
             Cancel
           </Button>
-          <Button variant="contained" type="submit">
+          <Button css={styles.button} variant="contained" type="submit">
             Create Employee
           </Button>
         </footer>

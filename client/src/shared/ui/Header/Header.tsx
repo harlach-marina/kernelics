@@ -1,4 +1,5 @@
 import { FC, ReactNode } from 'react';
+
 import { styles } from './Header.styles';
 
 interface HeaderProps {

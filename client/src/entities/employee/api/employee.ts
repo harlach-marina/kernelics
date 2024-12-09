@@ -1,5 +1,6 @@
-import { User } from '../types';
 import { api } from 'shared';
+
+import { User } from '../types';
 
 export const getUsers = async () => {
   return await api('users');

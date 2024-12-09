@@ -1,5 +1,6 @@
 import { css } from '@emotion/react';
-import { MediaQueries } from 'shared/constants';
+
+import { Colors, MediaQueries } from 'shared/constants';
 
 export const styles = {
   header: css`
@@ -22,6 +23,10 @@ export const styles = {
       flex-direction: row;
       margin: 80px auto 0;
     }
+
+    & .MuiInputBase-root {
+      font-size: 18px;
+    }
   `,
   select: css`
     width: 100%;
@@ -37,23 +42,29 @@ export const styles = {
     justify-content: space-between;
     margin-top: 30px;
 
-    & button {
-      padding: 7px 12px;
-      text-transform: none;
-      font-size: 16px;
-    }
-
     @media only screen and (min-width: ${MediaQueries.SMALL}) {
       flex-direction: row;
-
-      & button {
-        padding: 10px 30px;
-        font-size: 18px;
-      }
     }
 
     @media only screen and (min-width: ${MediaQueries.MEDIUM}) {
       margin-top: 40px;
     }
+  `,
+  button: css`
+    padding: 10px;
+    width: 100%;
+    text-transform: none;
+    font-size: 16px;
+    background-color: ${Colors.primaryBlue};
+    color: ${Colors.backgroundWhite};
+
+    @media only screen and (min-width: ${MediaQueries.SMALL}) {
+      font-size: 18px;
+    }
+  `,
+  buttonCancel: css`
+    background-color: ${Colors.backgroundWhite};
+    color: ${Colors.secondaryBlue};
+    border-color: ${Colors.secondaryBlue};
   `,
 };

@@ -16,7 +16,7 @@ export const Employee: FC<User> = employee => {
     return statusOptions.map(({ value, title }) => {
       return {
         value,
-        title: <StatusOption title={title} value={value as Status} />,
+        title: <StatusOption title={title} value={value as Status} fontSize="14px" />,
       };
     });
   }, []);
