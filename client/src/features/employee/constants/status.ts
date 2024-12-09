@@ -18,10 +18,15 @@ export const statusView: {
     title: 'Business Trip',
     color: '#b703c6',
   },
+  Lunch: {
+    title: 'Lunch Time',
+    color: '#eb850f',
+  },
 };
 
 export const statusOptions = [
-  { value: 'Working', title: statusView['Working'].title },
-  { value: 'Vacation', title: statusView['Vacation'].title },
   { value: 'Business', title: statusView['Business'].title },
+  { value: 'Lunch', title: statusView['Lunch'].title },
+  { value: 'Vacation', title: statusView['Vacation'].title },
+  { value: 'Working', title: statusView['Working'].title },
 ];

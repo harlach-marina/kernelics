@@ -1,10 +1,13 @@
 import { Dialog, DialogTitle, DialogContent, DialogContentText, Button, TextField } from '@mui/material';
 import { useAppDispatch } from 'app/hooks';
 import { createEmployee, Status, User } from 'entities/employee';
-import { ChangeEvent, FC, FormEvent, useState } from 'react';
+import { ChangeEvent, FC, FormEvent, useMemo, useState } from 'react';
 import { SelectBox } from 'shared/ui';
 import { styles } from './AddEmployee.styles';
 import { statusOptions } from '../../constants/status';
+import { StatusOption } from '../StatusOption';
+
+const IMG_MOCK = 'https://picsum.photos/id/338/200/200';
 
 interface AddEmployeeProps {
   handleClose: () => void;
@@ -14,6 +17,15 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
   const dispatch = useAppDispatch();
   const [employeeName, setEmployeeName] = useState<string>('');
   const [employeeStatus, setEmployeeStatus] = useState<Status>('Working');
+
+  const options = useMemo(() => {
+    return statusOptions.map(({ value, title }) => {
+      return {
+        value,
+        title: <StatusOption title={title} value={value as Status} />,
+      };
+    });
+  }, []);
 
   const handleChangeName = (event: ChangeEvent<HTMLInputElement>) => {
     const {
@@ -31,7 +43,7 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
     event.preventDefault();
     const user: Omit<User, 'id'> = {
       name: employeeName,
-      img: 'https://picsum.photos/id/338/200/200',
+      img: IMG_MOCK,
       status: employeeStatus,
     };
     await dispatch(createEmployee(user));
@@ -66,7 +78,7 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
             <SelectBox
               variant="standard"
               optionsLabel="Filter by status"
-              options={statusOptions}
+              options={options}
               selectedOption={employeeStatus}
               setSelectedOption={handleChangeStatus}
             />

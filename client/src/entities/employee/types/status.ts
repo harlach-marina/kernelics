@@ -1,1 +1,1 @@
-export type Status = 'Working' | 'Vacation' | 'Business';
+export type Status = 'Working' | 'Vacation' | 'Business' | 'Lunch';
