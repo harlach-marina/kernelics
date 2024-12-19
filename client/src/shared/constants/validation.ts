@@ -1,0 +1,1 @@
+export const RequiredFieldError = 'Required field is empty';

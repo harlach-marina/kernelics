@@ -9,6 +9,7 @@ import { StatusOption } from '../StatusOption';
 import { statusOptions } from '../../constants/status';
 
 import { styles } from './AddEmployee.styles';
+import { RequiredFieldError } from 'shared/constants';
 
 const IMG_MOCK = 'https://picsum.photos/id/338/200/200';
 
@@ -18,8 +19,10 @@ interface AddEmployeeProps {
 
 export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
   const dispatch = useAppDispatch();
+
   const [employeeName, setEmployeeName] = useState<string>('');
   const [employeeStatus, setEmployeeStatus] = useState<Status>('Working');
+  const [error, setError] = useState('');
 
   const options = useMemo(() => {
     return statusOptions.map(({ value, title }) => {
@@ -36,6 +39,7 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
     } = event;
 
     setEmployeeName(value);
+    setError('');
   };
 
   const handleChangeStatus = useCallback((value: string) => {
@@ -44,6 +48,14 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
 
   const handleSubmit = async (event: FormEvent<HTMLFormElement>) => {
     event.preventDefault();
+
+    if (!employeeName.trim()) {
+      setEmployeeName('');
+      setError(RequiredFieldError);
+
+      return;
+    }
+
     const user: Omit<User, 'id'> = {
       name: employeeName,
       img: IMG_MOCK,
@@ -70,11 +82,12 @@ export const AddEmployee: FC<AddEmployeeProps> = ({ handleClose }) => {
         <main css={styles.formFields}>
           <TextField
             autoFocus
-            required
             fullWidth
+            error={!!error}
+            helperText={error}
             variant="standard"
             id="employeeName"
-            placeholder="Full name"
+            placeholder="Full name*"
             value={employeeName}
             onChange={handleChangeName}
           />

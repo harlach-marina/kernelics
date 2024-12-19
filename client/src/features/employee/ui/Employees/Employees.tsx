@@ -1,4 +1,4 @@
-import { useDeferredValue, useEffect, useState } from 'react';
+import { useCallback, useDeferredValue, useEffect, useState } from 'react';
 
 import AddIcon from '@mui/icons-material/Add';
 import { Button } from '@mui/material';
@@ -24,13 +24,39 @@ export const Employees = () => {
 
   const [openDialog, setOpenDialog] = useState(false);
 
+  const checkSubstring = ({ value, targetValue }: { value: string; targetValue?: string }) => {
+    return !targetValue || value.toLocaleLowerCase().includes(targetValue.trim().toLocaleLowerCase());
+  };
+
+  const filterEmployees = useCallback(
+    ({
+      employees,
+      filterName,
+      filterStatus,
+    }: {
+      employees: User[];
+      filterName: string;
+      filterStatus?: Status | '';
+    }) => {
+      const filteredEmployees = employees.filter(({ name, status }) => {
+        const hasName = checkSubstring({ value: name, targetValue: filterName });
+        const hasSatus = status === filterStatus || filterStatus === '';
+
+        return hasName && hasSatus;
+      });
+
+      setFilteredEmployees(filteredEmployees);
+    },
+    [],
+  );
+
   useEffect(() => {
     dispatch(getEmployees());
   }, [dispatch]);
 
   useEffect(() => {
-    setFilteredEmployees(employees);
-  }, [employees]);
+    filterEmployees({ employees, filterName: employeeFilterName, filterStatus: employeeFilterStatus });
+  }, [filterEmployees, employees, employeeFilterName, employeeFilterStatus]);
 
   const handleCreate = () => {
     setOpenDialog(true);
@@ -40,36 +66,17 @@ export const Employees = () => {
     setOpenDialog(false);
   };
 
-  const checkSubstring = ({ value, targetValue }: { value: string; targetValue?: string }) => {
-    return !targetValue || value.toLocaleLowerCase().includes(targetValue.trim().toLocaleLowerCase());
-  };
-
-  const filterEmployees = ({ filterName, filterStatus }: { filterName: string; filterStatus?: Status | '' }) => {
-    const filteredEmployees = employees.filter(({ name, status }) => {
-      const hasName = checkSubstring({ value: name, targetValue: filterName });
-      const hasSatus = status === filterStatus || filterStatus === '';
-
-      return hasName && hasSatus;
-    });
-
-    setFilteredEmployees(filteredEmployees);
-  };
-
   const handleChangeFilterName = (value: string) => {
     setEmployeeFilterName(value);
-    filterEmployees({ filterName: value, filterStatus: employeeFilterStatus });
   };
 
   const handleChangeFilterStatus = (value: string) => {
     setEmployeeFilterStatus(value as Status);
-    filterEmployees({ filterName: employeeFilterName, filterStatus: value as Status | '' });
   };
 
   const handleFilterReset = () => {
     setEmployeeFilterName('');
     setEmployeeFilterStatus('');
-
-    filterEmployees({ filterName: '', filterStatus: '' });
   };
 
   return (

@@ -18,10 +18,12 @@ export const styles = {
     flex-direction: column;
     gap: 10px;
     margin: 20px auto 0;
+    height: auto;
 
     @media only screen and (min-width: ${MediaQueries.MEDIUM}) {
       flex-direction: row;
-      margin: 80px auto 0;
+      margin: 70px auto 0;
+      height: 50px;
     }
 
     & .MuiInputBase-root {
